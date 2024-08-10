@@ -177,7 +177,7 @@ app.get('/actualizardatos/duelo', async (req, res) => {
         res.status(200).json(resultado['infoduelo']);
     }
     catch (error) {
-        console.log(error);
+        console.error(error);
     }
 });
 
@@ -190,8 +190,90 @@ app.get('/ingresar', (req, res) => {
     res.render('ingresar');
 });
 
+app.get('/validaringreso', async (req, res) => {
+    const email = req.query.email;
+    
+    const contra = req.query.contra;
+
+    const client = new MongoClient(url);
+    await client.connect();
+
+    const database = client.db(dbName);
+    const collection = database.collection('usuarios');
+
+    const validarEmail = { "email": email };
+    const resultado = await collection.findOne(validarEmail);
+
+    //verificar si email existe
+    if (resultado) {
+        // si la contraseña de la base de datos es igual a la enviada
+        if (resultado['contrasena'] == contra) {
+            res.status(200).json({ existe: true, usuario: resultado['nombreusuario'] });
+        }
+        // si no es igual se envia un fasle 
+        else {
+            res.status(200).json({ existe: false });
+        }
+
+    } 
+    // si no se encuentra el correo
+    else {
+        res.status(200).json({ existe: false });
+    }
+    await client.close();
+});
+
 app.get('/registrar', (req, res) => {
     res.render('registrar');
+});
+
+app.post('/registrarusuario', async (req, res) => {
+    // informacion del nuevo usuario 
+    const email = req.query.email;
+    const nombreusuario = req.query.nombreusuario;
+    const contra = req.query.contra;
+    
+
+    const client = new MongoClient(url);
+
+    try {
+        await client.connect();
+        const database = client.db(dbName);
+        const collection = database.collection('usuarios');
+
+        // verificar si email ya esta en uso
+        const verificarEmail = await collection.findOne({ "email" : email });
+        // verificar si nombre de usuario ya esta en uso
+        const verificarNombreDeUsuario = await collection.findOne({ "nombreusuario" : nombreusuario });
+        if (verificarEmail) {
+            await client.close();
+            res.status(200).json( { registrado: false, mensaje: "Correo ya esta en uso" });
+        }
+        else if (verificarNombreDeUsuario) {
+            await client.close();
+            res.status(200).json( { registrado: false, mensaje: "nombre de usuario ya esta en uso" });
+        }
+        else {
+
+            // ingresa informacion de usuario nuevo
+            const infoDeNuevoUsuario = {
+                "email": email,
+                "nombreusuario": nombreusuario,
+                "victorias": 0,
+                "derrotas": 0,
+                "contrasena": contra, 
+                "equipos": []
+            };
+
+            await collection.insertOne(infoDeNuevoUsuario);
+            await client.close();
+            res.status(200).json( { registrado: true, mensaje: "Usuario fue registrado correctamente" });
+        }
+    } 
+    catch (err) {
+        console.error(err);
+    } 
+
 });
 
 

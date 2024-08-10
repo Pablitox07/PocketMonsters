@@ -40,14 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('failDiv').style = "height: 0px";
             document.getElementById('failDiv').innerHTML = "";
             const emailTesteado = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-            
-            // ------------- Check el nombre de usuario no este escogido -------------------------------------------------------
-
-
-
-
-
-
 
             // -----------check contrasena iguales 
 
@@ -57,15 +49,29 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             // ------------- check cantidad de caracteres y numeros --------------------------------------------------
 
-            // const regex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
-            // regex.test(password);
+            else if (contra1.length < 8){
+                document.getElementById('failDiv').style = "height: 25px";
+                document.getElementById('failDiv').innerHTML = `<span style="color: red;">La contraseña debe tener por lo menos 8 caracteres</span><img src="./pika.png" alt="pikachu triste" style="height: 80%; width: auto;">`;
+            }
 
             // ----------- Check para el formato del email -------------------------------------------------------
 
             else if (emailTesteado) {
                 document.getElementById('failDiv').style = "height: 0px";
                 document.getElementById('failDiv').innerHTML = "";
-                console.log(`Email: ${email}, contrasena: ${contra1}, contrasena2: ${contra2}, nombre de usuario: ${userNombre}`);
+                fetch(`http://localhost:3000/registrarusuario?email=${email}&nombreusuario=${userNombre}&contra=${contra1}`,{ method: 'POST' })
+                .then(resultado => resultado.json())
+                .then(resultado =>{
+                    if (resultado['registrado']){
+                        document.getElementById('mainIngresar').innerHTML = `<div style="text-align: center;"><div><h1>Usuario registrado correctamente</h1><img src="../pikaFeliz.png" alt="pikaFeliz" style="width: 200px; height: auto;"></div></div>`;
+                    }
+                    else {
+                        document.getElementById('failDiv').style = "height: 25px";
+                        document.getElementById('failDiv').innerHTML = `<span style="color: red;">${resultado['mensaje']}</span><img src="./pika.png" alt="pikachu triste" style="height: 80%; width: auto;">`;
+                    }
+                })
+
+
             }
             else if (!emailTesteado) {
                 document.getElementById('failDiv').style = "height: 25px";
