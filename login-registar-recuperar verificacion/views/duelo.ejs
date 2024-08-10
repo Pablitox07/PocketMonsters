@@ -6,36 +6,50 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Duelo</title>
+    <title><%= resultado.infoduelo.jugador1.nombreUsuario %> Vs <%= resultado.infoduelo.jugador2.nombreUsuario %></title>
     <link rel="stylesheet" href="../duelo.css">
     <script src="../duelo.js" defer></script>
+    <link rel="icon" href="../logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../headerStyle.css">
 </head>
 <body>
-    <div>
+    <header class="header">
+        <div class="iconosHeader">
+            <div class="divLogo">
+                <a href="./home.html">
+                    <img src="./logo.png" alt="icono de pagina" id="iconoPagina">
+               </a>
+            </div>
+           <div class="divBotonesHeader">
+                <a href="/ingresar" class="botonesHeader">Iniciar sesión</a>
+                <a href="/registrar" class="botonesHeader">Registrarse</a>
+            </div>
+        </div>
+    </header>
+    <div style="margin-top: 50px;">
         <div class="divEquipos">
-            <div>
+            <div class="divListaDePokemons">
                 <div class="divequipoDeJugador">
-                    <p><%= resultado.infoduelo.jugador1.nombreUsuario %></p>
+                    <h4><%= resultado.infoduelo.jugador1.nombreUsuario %></h4>
                     
                     <% for (let i = 0; i < 6; i++) { %>
                         <div>
-                            <input type="radio" id="<%= resultado.infoduelo.jugador1.equipo[i.toString()].nombre %>" name="team1" value="<%= resultado.infoduelo.jugador1.equipo[i.toString()].nombre %>""
-                            <label for="<%= resultado.infoduelo.jugador1.equipo[i.toString()].nombre %>"><%= resultado.infoduelo.jugador1.equipo[i.toString()].nombre %> HP: <%= resultado.infoduelo.jugador1.equipo[i.toString()].HP %></label>
+                            <input type="radio" id="inputEquipo1<%= i %>" name="team1" value="<%= i %>">
+                            <label id="labelPokemonEquipo1<%= i %>" for="<%= resultado.infoduelo.jugador1.equipo[i.toString()].nombre %>"><%= resultado.infoduelo.jugador1.equipo[i.toString()].nombre %> HP:</label> <label style="color: red;" id="hpPokemonEquipo1<%= i %>"><%= resultado.infoduelo.jugador1.equipo[i.toString()].HP %></label>
                         </div>
                     <% } %>
                 </div>
             </div>
-            <div>
-
+            <div id="mostrarganadorOPerdedor" style="display: flex; flex-direction: column;">
             </div>
-            <div>
+            <div class="divListaDePokemons">
                 <div class="divequipoDeJugador">
-                    <p><%= resultado.infoduelo.jugador2.nombreUsuario %></p>
+                    <h4><%= resultado.infoduelo.jugador2.nombreUsuario %></h4>
                     
                     <% for (let i = 0; i < 6; i++) { %>
                         <div>
-                            <input type="radio" id="<%= resultado.infoduelo.jugador2.equipo[i.toString()].nombre %>" name="team2" value="<%= resultado.infoduelo.jugador2.equipo[i.toString()].nombre %>"
-                            <label for="<%= resultado.infoduelo.jugador2.equipo[i.toString()].nombre %>"><%= resultado.infoduelo.jugador2.equipo[i.toString()].nombre %> HP: <%= resultado.infoduelo.jugador2.equipo[i.toString()].HP %></label>
+                            <input type="radio" id="inputEquipo2<%= i %>" name="team2" value="<%= i %>">
+                            <label id="labelPokemonEquipo2<%= i %>" for="<%= resultado.infoduelo.jugador2.equipo[i.toString()].nombre %>"><%= resultado.infoduelo.jugador2.equipo[i.toString()].nombre %> HP:</label> <label style="color: red;" id="hpPokemonEquipo2<%= i %>"> <%= resultado.infoduelo.jugador2.equipo[i.toString()].HP %></label>
                         </div>
                     <% } %>
                       
@@ -48,4 +62,5 @@
     </div> 
 
 </body>
+
 </html>
