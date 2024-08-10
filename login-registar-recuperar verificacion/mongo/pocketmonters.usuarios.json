@@ -1,66 +1,112 @@
 [{
   "_id": {
-    "$oid": "66b1656d60fc8a9e1ddd4a06"
+    "$oid": "66b79d25183d7838ee028b31"
   },
-  "pablo": {
-    "victorias": 6,
-    "derrotas": 6,
-    "equipos": [
-      {
-        "primario": true,
-        "equipo1": [
-          "Squirtle",
-          "Jigglypuff",
-          "Nidorino",
-          "Wartortle",
-          "Charizard",
-          "Golbat"
-        ]
-      },
-      {
-        "primario": false,
-        "equipo2": [
-          "Squirtle",
-          "Jigglypuff",
-          "Nidorino",
-          "Wartortle",
-          "Charizard",
-          "Golbat"
-        ]
-      }
-    ]
-  }
+  "email": "pablo@gmail.com",
+  "nombreusuario": "pablo",
+  "victorias": 6,
+  "derrotas": 6,
+  "contrasena": "Pablo12345",
+  "equipos": [
+    {
+      "primario": true,
+      "equipo1": [
+        "Squirtle",
+        "Jigglypuff",
+        "Nidorino",
+        "Wartortle",
+        "Charizard",
+        "Golbat"
+      ]
+    },
+    {
+      "primario": false,
+      "equipo2": [
+        "Squirtle",
+        "Jigglypuff",
+        "Nidorino",
+        "Wartortle",
+        "Charizard",
+        "Golbat"
+      ]
+    }
+  ]
 },
 {
   "_id": {
-    "$oid": "66b1662e60fc8a9e1ddd4a0a"
+    "$oid": "66b79d87183d7838ee028b33"
   },
-  "jugador2": {
-    "victorias": 6,
-    "derrotas": 6,
-    "equipos": [
-      {
-        "primario": true,
-        "equipo1": [
-          "Squirtle",
-          "Jigglypuff",
-          "Nidorino",
-          "Wartortle",
-          "Charizard",
-          "Golbat"
-        ]
-      },
-      {
-        "primario": false,
-        "equipo2": [
-          "Squirtle",
-          "Jigglypuff",
-          "Nidorino",
-          "Wartortle",
-          "Charizard",
-          "Golbat"
-        ]
-      }
-    ]
-  }
+  "email": "jugador2@gmail.com",
+  "nombreusuario": "jugador2",
+  "victorias": 6,
+  "derrotas": 6,
+  "contrasena": "jugador222",
+  "equipos": [
+    {
+      "primario": true,
+      "equipo1": [
+        "Squirtle",
+        "Jigglypuff",
+        "Nidorino",
+        "Wartortle",
+        "Charizard",
+        "Golbat"
+      ]
+    },
+    {
+      "primario": false,
+      "equipo2": [
+        "Squirtle",
+        "Jigglypuff",
+        "Nidorino",
+        "Wartortle",
+        "Charizard",
+        "Golbat"
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "66b7c911c34957c53f9aa64b"
+  },
+  "email": "jugador666@gmail.xxxxxx",
+  "nombreusuario": "jugador222x",
+  "victorias": 0,
+  "derrotas": 0,
+  "contrasena": "123456789",
+  "equipos": []
+},
+{
+  "_id": {
+    "$oid": "66b7cf6bf25eead9861ef473"
+  },
+  "email": "fdar@gmail.com",
+  "nombreusuario": "pablo9407",
+  "victorias": 0,
+  "derrotas": 0,
+  "contrasena": "123456789",
+  "equipos": []
+},
+{
+  "_id": {
+    "$oid": "66b7dc90f25eead9861ef474"
+  },
+  "email": "fdar@gmaippl.com",
+  "nombreusuario": "pablo94077",
+  "victorias": 0,
+  "derrotas": 0,
+  "contrasena": "123456789",
+  "equipos": []
+},
+{
+  "_id": {
+    "$oid": "66b7dd02f25eead9861ef475"
+  },
+  "email": "fdar@gmaippl.comz",
+  "nombreusuario": "pablo94071",
+  "victorias": 0,
+  "derrotas": 0,
+  "contrasena": "123456789",
+  "equipos": []
 }]

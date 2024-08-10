@@ -4,8 +4,183 @@
   },
   "duelo": "0",
   "infoduelo": {
-    "turnos": 18,
+    "turnos": 11,
     "aceptado": true,
+    "resultados": {
+      "estaterminado": true,
+      "ganador": "pablo",
+      "perdedor": "jugador23"
+    },
+    "jugador1": {
+      "nombreUsuario": "pablo",
+      "equipo": {
+        "0": {
+          "nombre": "Squirtle",
+          "HP": 34,
+          "ataque": 100
+        },
+        "1": {
+          "nombre": "Jigglypuff",
+          "HP": 115,
+          "ataque": 100
+        },
+        "2": {
+          "nombre": "Nidorino",
+          "HP": 61,
+          "ataque": 100
+        },
+        "3": {
+          "nombre": "Wartortle",
+          "HP": 29,
+          "ataque": 100
+        },
+        "4": {
+          "nombre": "Charizard",
+          "HP": 0,
+          "ataque": 100
+        },
+        "5": {
+          "nombre": "Golbat",
+          "HP": 65,
+          "ataque": 100
+        }
+      }
+    },
+    "jugador2": {
+      "nombreUsuario": "jugador23",
+      "equipo": {
+        "0": {
+          "nombre": "Squirtle",
+          "HP": 0,
+          "ataque": 10
+        },
+        "1": {
+          "nombre": "Jigglypuff",
+          "HP": 0,
+          "ataque": 10
+        },
+        "2": {
+          "nombre": "Nidorino",
+          "HP": 0,
+          "ataque": 10
+        },
+        "3": {
+          "nombre": "Wartortle",
+          "HP": 0,
+          "ataque": 10
+        },
+        "4": {
+          "nombre": "Charizard",
+          "HP": 0,
+          "ataque": 10
+        },
+        "5": {
+          "nombre": "Golbat",
+          "HP": 0,
+          "ataque": 10
+        }
+      }
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "66b6a67b3675bd09ce33c462"
+  },
+  "duelo": "1",
+  "infoduelo": {
+    "turnos": 0,
+    "aceptado": true,
+    "resultados": {
+      "estaterminado": false,
+      "ganador": "",
+      "perdedor": ""
+    },
+    "jugador1": {
+      "nombreUsuario": "pablo666",
+      "equipo": {
+        "0": {
+          "nombre": "Squirtle",
+          "HP": 44,
+          "ataque": 10
+        },
+        "1": {
+          "nombre": "Jigglypuff",
+          "HP": 115,
+          "ataque": 10
+        },
+        "2": {
+          "nombre": "Nidorino",
+          "HP": 61,
+          "ataque": 10
+        },
+        "3": {
+          "nombre": "Wartortle",
+          "HP": 59,
+          "ataque": 10
+        },
+        "4": {
+          "nombre": "Charizard",
+          "HP": 0,
+          "ataque": 10
+        },
+        "5": {
+          "nombre": "Golbat",
+          "HP": 75,
+          "ataque": 10
+        }
+      }
+    },
+    "jugador2": {
+      "nombreUsuario": "jugador666",
+      "equipo": {
+        "0": {
+          "nombre": "Squirtle",
+          "HP": 44,
+          "ataque": 10
+        },
+        "1": {
+          "nombre": "Jigglypuff",
+          "HP": 115,
+          "ataque": 10
+        },
+        "2": {
+          "nombre": "Nidorino",
+          "HP": 61,
+          "ataque": 10
+        },
+        "3": {
+          "nombre": "Wartortle",
+          "HP": 59,
+          "ataque": 10
+        },
+        "4": {
+          "nombre": "Charizard",
+          "HP": 78,
+          "ataque": 10
+        },
+        "5": {
+          "nombre": "Golbat",
+          "HP": 0,
+          "ataque": 10
+        }
+      }
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "66b6a7083675bd09ce33c463"
+  },
+  "duelo": "2",
+  "infoduelo": {
+    "turnos": 0,
+    "aceptado": true,
+    "resultados": {
+      "estaterminado": false,
+      "ganador": "",
+      "perdedor": ""
+    },
     "jugador1": {
       "nombreUsuario": "pablo",
       "equipo": {
@@ -31,7 +206,7 @@
         },
         "4": {
           "nombre": "Charizard",
-          "HP": 78,
+          "HP": 0,
           "ataque": 10
         },
         "5": {
@@ -42,7 +217,7 @@
       }
     },
     "jugador2": {
-      "nombreUsuario": "jugador2",
+      "nombreUsuario": "jugador23",
       "equipo": {
         "0": {
           "nombre": "Squirtle",
@@ -71,7 +246,7 @@
         },
         "5": {
           "nombre": "Golbat",
-          "HP": 75,
+          "HP": 0,
           "ataque": 10
         }
       }
