@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        var resultado = <%- JSON.stringify(email) %>;
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambio de contraseña</title>
+    <link rel="icon" href="./logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../headerStyle.css">
+    <link rel="stylesheet" href="../registrar.css">
+    <script src="../forocambiarcontrasena.js"></script>
+</head>
+
+<body>
+    <header class="header">
+        <div class="iconosHeader">
+            <div class="divLogo">
+                <a href="./home.html">
+                    <img src="./logo.png" alt="icono de pagina" id="iconoPagina">
+               </a>
+            </div>
+           <div class="divBotonesHeader">
+                <a href="/ingresar" class="botonesHeader">Iniciar sesión</a>
+                <a href="/registrar" class="botonesHeader">Registrarse</a>
+            </div>
+        </div>
+    </header>
+        <div class="divInputs">
+            <div class="mainIngresar" id="mainIngresar">
+                <div class="tituloRegistro">
+                    <h3>Cambio de contraseña</h3>
+                </div>
+                <div class="columnas">
+                    <div class="divCentrar">
+                        <label for="Contraseña ">Nueva contraseña:</label>
+                    </div>
+                    <div class="divCentrar">
+                        <input type="password" name="" id="contra1" class="inputIngresar">
+                    </div>
+                </div>
+                <div class="columnas">
+                    <div class="divCentrar">
+                        <label for="Contraseña ">Repita su nueva contraseña:</label>
+                    </div>
+                    <div class="divCentrar">
+                        <input type="password" name="" id="contra2" class="inputIngresar">
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" id="registar">Cambiar contraseña</button>
+                </div>
+                <div id="failDiv"></div>
+            </div>
+        </div>
+
+</body>
+</html>

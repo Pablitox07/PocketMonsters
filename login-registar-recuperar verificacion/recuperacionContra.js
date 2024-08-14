@@ -1,10 +1,17 @@
 document.addEventListener('DOMContentLoaded', ()=> {
     const button = document.getElementById('recuperar');
     button.addEventListener('click', () => {
+        let email = document.getElementById('email').value;
         const emailTesteado = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
         if (emailTesteado){
             document.getElementById('failDiv').innerHTML = "";
-            console.log(`${email} ${contra}`);
+            console.log(`${email}`);
+            fetch(`http://localhost:3000/cambiodecontra?email=${email}`,{ method: 'POST'})
+            .then(resultado => resultado.json())
+            .then(resultado =>{
+                document.getElementById('divprincipal').innerHTML = `<div style="text-align: center;"><div><h1>${resultado['mensaje']}</h1><img src="../pikaFeliz.png" alt="pikaFeliz" style="width: 200px; height: auto;"></div></div>`;
+                    
+            })
         }
         else {
             document.getElementById('failDiv').style = "height: 25px";
@@ -12,8 +19,6 @@ document.addEventListener('DOMContentLoaded', ()=> {
         }
 
     });
-    
-    
-    //document.getElementById("failDiv");
+
 
 });

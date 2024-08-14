@@ -1,3 +1,17 @@
+const nodemailer = require('nodemailer');
+
+// informacion de nodemailer
+const usuarioDeEthereal = 'lacey.brakus25@ethereal.email';
+
+const transportador = nodemailer.createTransport({
+    host: 'smtp.ethereal.email',
+    port: 587,
+    auth: {
+        user: usuarioDeEthereal,
+        pass: 'WXxaNsMAcBzmJPVmwY'
+    }
+});
+
 const express = require('express');
 const { MongoClient } = require('mongodb');
 const path = require('path');
@@ -276,7 +290,83 @@ app.post('/registrarusuario', async (req, res) => {
 
 });
 
+app.get('/recuperarcontrasena', (req, res) => {
+    res.render('recuperacionContra');
 
+});
+
+app.post('/cambiodecontra', async (req, res) => {
+    // informacion del nuevo usuario 
+    const email = req.query.email;
+    
+
+    const client = new MongoClient(url);
+
+    try {
+        await client.connect();
+        const database = client.db(dbName);
+        const collection = database.collection('usuarios');
+
+        // verificar si email ya esta en uso
+        const verificarEmail = await collection.findOne({ "email" : email });
+        if (verificarEmail) {
+            await client.close();
+            const opcionesCorreo = {
+                from: usuarioDeEthereal,
+                to: usuarioDeEthereal,
+                subject: `cambio de contrasena de ${verificarEmail['nombreusuario']}`,
+                html: `<h1>Hola ${verificarEmail['nombreusuario']}</h1><span>Para cambiar tu contraseña cliquea el siguiente link:</span> <a href="http://localhost:3000/forocambiarcontrasena?email=${verificarEmail['email']}">http://localhost:3000/forocambiarcontrasena?email=${verificarEmail['email']}</a>`
+            };
+            
+            transportador.sendMail(opcionesCorreo, (error, info) => {
+                if (error) {
+                    res.status(200).json({ mensaje: error });
+                    return console.log(error);
+                }
+            });
+            res.status(200).json({ mensaje: "Si el correo electrónico ingresado está correctamente registrado, recibirás un correo electrónico para cambiar tu contraseña" });
+        }
+        else {
+            await client.close();
+            res.status(200).json({ mensaje: "Si el correo electrónico ingresado está correctamente registrado, recibirás un correo electrónico para cambiar tu contraseña" });
+        }
+    } 
+    catch (err) {
+        console.error(err);
+    } 
+});
+
+app.get('/forocambiarcontrasena', (req, res) => {
+    const email = {email: req.query.email};
+    res.render('forocambiarcontrasena', {email: email});
+});
+
+app.post('/cambiarcontrasenabasededatos', async (req, res) => {
+    const email = req.query.email;
+    const contra = req.query.contra;
+
+    try{
+        const client = new MongoClient(url);
+        await client.connect();
+        const database = client.db(dbName);
+        const collection = database.collection('usuarios');
+        const filtro = { email: email };
+
+        const actualizacion = {
+            $set: {
+                contrasena: contra 
+            }
+        };
+
+        const resultado = await collection.updateOne(filtro, actualizacion);
+        await client.close();
+        res.status(200).json( { registrado: true, mensaje: "La contraseña fue actualizada correctamente" });
+    }
+    catch (err) {
+        console.error(err);
+        res.status(200).json( { registrado: true, mensaje: "Error al actualizar la contraseña" });
+    }
+});
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
